@@ -64,6 +64,29 @@
       width: 220px; 
       margin-bottom: 20px;
     }
+      .no-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d6d;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: none;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
   </style>
 </head>
 <body>
@@ -79,15 +102,23 @@
       <button id="yesBtn">Yes 😍</button>
       <button id="noBtn">No 😜</button>
     </div>
+    <div id="noPopup" class="no-popup">
+  ❌ Invalid choice  
+  <br>
+  System already detected you are my Valentine 💕
+    </div>
   </div>
-
-  <script>
+<script>
   const noBtn = document.getElementById("noBtn");
   const yesBtn = document.getElementById("yesBtn");
   const container = document.querySelector(".container");
+  const noPopup = document.getElementById("noPopup");
 
   noBtn.addEventListener("mouseover", moveButton);
-  noBtn.addEventListener("click", moveButton);
+  noBtn.addEventListener("click", () => {
+    showPopup();
+    moveButton();
+  });
 
   function moveButton() {
     const containerRect = container.getBoundingClientRect();
@@ -103,9 +134,18 @@
     noBtn.style.top = `${y}px`;
   }
 
+  function showPopup() {
+    noPopup.style.display = "block";
+
+    setTimeout(() => {
+      noPopup.style.display = "none";
+    }, 1200);
+  }
+
   yesBtn.addEventListener("click", () => {
     window.location.href = "yes.html";
   });
- </script>
+</script>
+  
 </body>
 </html>
