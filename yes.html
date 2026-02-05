@@ -30,7 +30,7 @@
       transition: 0.2s;
     }
 
-    #continue {
+    #continueBtn {
       background-color: #ff4d6d;
       color: white;
       margin-right: 20px;
@@ -54,8 +54,15 @@
     Happy Valentines Day Jaan❤️
   </h1>
     <div class="buttons">
-      <button id="continue">Continue 😘</button>
+      <button id="continueBtn">Continue 😘</button>
     </div>
   </div>
+  <script>
+    const continue = document.getElementById("continueBtn");
+   
+    continueBtn.addEventListener("click", () => {
+      window.location.href = "yes.html";
+    });
+</script>
 </body>
 </html>
